@@ -23,9 +23,9 @@ The two scripts in this directory cover different parts of Study 4. `augmented_d
 - **Quantum-classical regressor**: A PennyLane variational circuit (4 qubits, `StronglyEntanglingLayers`) embedded in a small feedforward network, trained with early stopping (the Hybrid Quantum SVR of Chapter 7).
 - **Additional experiments**: a Keras "engression" FCNN, a LOWESS-based "LASER" demo, an LSTM applied to non-temporal tabular data via artificial windowing, a custom `LASERRegressor`, a `RandomForestRegressor` used as an approximation of an Engression baseline, an autoencoder + learned gating network blending Huber/Gaussian Process/XGBoost predictions, and correlation/feature-importance plots.
 
-## Known Limitations
+## Datasets used by `original_dataset.py`
 
-`original_dataset.py` reads from several different CSV filenames across its cells (`Processed_Datass.csv`, `Processed_Data.csv`, `Finaldataset9.csv`), which may or may not represent the same underlying dataset — this needs verifying, since results from different cells are only directly comparable if the underlying data is identical. The two GPT-2+XGBoost cells and the two DeepSeek fine-tuning cells are near-duplicates and could be consolidated.
+Different cells of `original_dataset.py` read `Processed_Datass.csv`, `Processed_Data.csv` or `Finaldataset9.csv`, depending on the experiment.
 
 ## Usage
 
