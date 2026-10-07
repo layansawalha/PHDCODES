@@ -40,7 +40,7 @@ from qiskit_machine_learning.kernels import FidelityQuantumKernel
 SEED = 42
 N_QUBITS = 4
 RBM_N_ITER = 20
-KERNEL_SHOTS = 1024  # Qiskit's default for StatevectorSampler, set explicitly
+KERNEL_SHOTS = 1024
 OUTPUT_DIR = "/kaggle/working"
 RUN_FIVE_FOLD_CV = False
 os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -133,8 +133,6 @@ class QuantumSVMBranch(ClassifierMixin, BaseEstimator):
             entanglement=self.entanglement,
         )
 
-        # StatevectorSampler simulates the circuit on a noiseless statevector simulator.
-        # It returns measurement samples, so the number of shots is set explicitly here.
         sampler = StatevectorSampler(default_shots=KERNEL_SHOTS, seed=self.random_state)
         fidelity = ComputeUncompute(sampler=sampler)
         qkernel = FidelityQuantumKernel(fidelity=fidelity, feature_map=feature_map)
